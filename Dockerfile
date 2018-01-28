@@ -14,7 +14,6 @@ RUN mv init.sh /usr/local/bin/
 RUN chmod u+x /usr/local/bin/init.sh
 
 # install nginx
-RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y nginx
 RUN apt-get install -y --no-install-recommends python make gcc g++ libc-dev;
 
