@@ -18,5 +18,7 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y nginx
 RUN apt-get install -y --no-install-recommends python make gcc g++ libc-dev;
 
+RUN npm install -g pm2
+
 EXPOSE 2222 80
 CMD [ "init.sh" ]
