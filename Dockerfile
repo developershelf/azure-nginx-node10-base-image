@@ -15,8 +15,6 @@ RUN chmod u+x /usr/local/bin/init.sh
 
 # install nginx
 RUN apt-get install -y nginx
-RUN apt-get install -y --no-install-recommends python make gcc g++ libc-dev;
-
 RUN npm install -g pm2
 
 RUN sed -i -e 's/\r$//' /usr/local/bin/init.sh
