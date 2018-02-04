@@ -1,4 +1,4 @@
-FROM node:6-slim AS build-env
+FROM node:6-slim
 
 # ssh
 ENV SSH_PASSWD "root:Docker!"
@@ -8,10 +8,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
     && echo "$SSH_PASSWD" | chpasswd 
 
+WORKDIR /usr/local/bin/
+
 COPY . .
+RUN chmod u+x init.sh
 RUN mv sshd_config /etc/ssh/
 RUN mv init.sh /usr/local/bin/
-RUN chmod u+x /usr/local/bin/init.sh
 
 # install nginx
 RUN apt-get install -y nginx
@@ -19,5 +21,6 @@ RUN npm install -g pm2
 
 RUN sed -i -e 's/\r$//' /usr/local/bin/init.sh
 
-EXPOSE 2222 80
+EXPOSE 2222
+EXPOSE 80
 CMD [ "init.sh" ]
