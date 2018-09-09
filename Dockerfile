@@ -19,6 +19,8 @@ RUN mv init.sh /usr/local/bin/
 RUN apt-get install -y nginx
 RUN npm install -g pm2
 
+RUN apt-get update
+
 EXPOSE 2222
 EXPOSE 80
 CMD [ "init.sh" ]
