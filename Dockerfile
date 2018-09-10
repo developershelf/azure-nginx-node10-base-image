@@ -16,10 +16,9 @@ RUN mv sshd_config /etc/ssh/
 RUN mv init.sh /usr/local/bin/
 
 # install nginx
+RUN apt-get update -y
 RUN apt-get install -y nginx
 RUN npm install -g pm2
-
-RUN apt-get update -y
 
 EXPOSE 2222
 EXPOSE 80
