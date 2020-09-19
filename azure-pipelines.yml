@@ -10,9 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '$(dockerRegistryServiceConnectionVariable)'
   imageRepository: 'buildrepositorynamebuildbuildid'
-  containerRegistry: '$(containerRegistryVariable)'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
   
@@ -34,7 +32,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: $(containerRegistryVariable)
         tags: |
           $(tag)
           'latest'
