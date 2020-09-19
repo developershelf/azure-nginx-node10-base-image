@@ -8,6 +8,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
     && echo "$SSH_PASSWD" | chpasswd 
 
+
 WORKDIR /app
 COPY . .
 
@@ -18,6 +19,7 @@ RUN mv init.sh /usr/local/bin/
 # install nginx
 RUN apt-get install -y nginx
 RUN npm install -g pm2
+RUN npm install -g npm@latest
 
 EXPOSE 2222
 EXPOSE 80
