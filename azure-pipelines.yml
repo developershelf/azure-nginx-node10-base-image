@@ -32,7 +32,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(containerRegistryVariable)
+        containerRegistry: $(dockerRegistryServiceConnectionVariable)
         tags: |
           $(tag)
           'latest'
