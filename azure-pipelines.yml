@@ -10,9 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'd4633620-4e4a-4d5f-929e-e7cd0b07f7c1'
-  imageRepository: 'buildrepositorynamebuildbuildid'
-  containerRegistry: 'developershelf.azurecr.io'
+  imageRepository: '$(imageRepository)'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
   
@@ -31,9 +29,10 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: 'devshelf-container-registry'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
+          latest
