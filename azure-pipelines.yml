@@ -5,13 +5,13 @@
 trigger:
 - master
 
-schedules:
-- cron: "0 2 * * 5"
-  displayName: Weekly Friday build
-  branches:
-    include:
-    - master
-  always: true
+#schedules:
+#- cron: "0 2 * * 5"
+#  displayName: Weekly Friday build
+#  branches:
+#    include:
+#    - master
+#  always: true
 
 resources:
 - repo: self
